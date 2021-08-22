@@ -1,0 +1,7 @@
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<head>
+<h1>Daniel's Picks: Musings on Making Money</h1>
+# have a section that pulls from major markets to show day/week/month/year progress
+<%= react_component("biography/Biography", {}, {prerender: true}) %>
+<%= react_component("ArticlePreview", {articles: @articles}, {prerender: true}) %>

@@ -1,0 +1,35 @@
+.article-preview__preview {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: #2f2f2f;
+  border-bottom: 1px white dotted;
+}
+
+.article-preview__heading {
+  font-size: 2em;
+}
+
+.article-preview__publish {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+
+.article-preview__publish--date {
+ font-weight: 700;
+ margin-left: 1em;
+}
+
+.article-preview__publish--author {
+
+}
+
+.article-preview__text {
+  font-style: italic;
+}
+
+.article-preview__article-link {
+  background-color: white;
+  color: black;
+}
