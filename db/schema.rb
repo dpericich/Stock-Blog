@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_220558) do
+ActiveRecord::Schema.define(version: 2021_08_23_032220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,21 @@ ActiveRecord::Schema.define(version: 2021_08_21_220558) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "company_name", null: false
+    t.text "description"
+    t.decimal "pe_ratio"
+    t.string "market_cap"
+    t.decimal "dividend_yield"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "daily_stocks", force: :cascade do |t|
     t.string "company_name", null: false
     t.string "ticker_symbol", null: false
     t.decimal "ending_price", null: false
     t.date "ending_date", null: false
-    t.decimal "pe_ratio"
-    t.decimal "market_cap"
-    t.decimal "dividend_yield"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

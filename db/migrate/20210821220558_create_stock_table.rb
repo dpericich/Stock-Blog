@@ -5,9 +5,6 @@ class CreateStockTable < ActiveRecord::Migration[5.2]
       t.string :ticker_symbol, null: false
       t.decimal :ending_price, null: false
       t.date :ending_date, null: false
-      t.decimal :pe_ratio
-      t.decimal :market_cap
-      t.decimal :dividend_yield
 
       t.timestamps
     end
