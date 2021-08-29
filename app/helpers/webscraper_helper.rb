@@ -1,9 +1,6 @@
 module WebscraperHelper
   def self.google_stock_scraper(ticker_symbol)
-    address = "https://www.google.com/search?q=#{ticker_symbol}+stock"
-    web_page = HTTParty.get(address)
-    parsed_web_page = Nokogiri::HTML5(web_page)
-
+    parsed_web_page = retrieve_google_page(ticker_symbol)
     company_name = format_google_company_name(parsed_web_page)
     ticker_symbol = ticker_symbol
     ending_price = format_google_ending_price(parsed_web_page)
@@ -27,6 +24,12 @@ module WebscraperHelper
     market_cap = parsed_web_page.css('span.r0bn4c.rQMQod').text
     # dividend_yield = parsed_web_page.css().text
     binding.pry
+  end
+
+  def self.retrieve_google_page(ticker_symbol)
+    address = "https://www.google.com/search?q=#{ticker_symbol}+stock"
+    web_page = HTTParty.get(address)
+    parsed_web_page = Nokogiri::HTML5(web_page)
   end
 
   def self.format_google_company_name(parsed_web_page)
