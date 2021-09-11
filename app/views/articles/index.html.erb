@@ -4,4 +4,15 @@
 <h1>Daniel's Picks: Musings on Making Money</h1>
 # have a section that pulls from major markets to show day/week/month/year progress
 <%= react_component("biography/Biography", {}, {prerender: true}) %>
-<%= react_component("ArticlePreview", {articles: @articles}, {prerender: true}) %>
+<%= link_to "New Article", "/articles/new" %>
+<hr />
+<% @articles.each do |article| %>
+  <%= react_component("ArticlePreview", props={
+    title: article.title,
+    author: article.author,
+    date: Date.parse(article.published_date.to_s).strftime("%m/%d/%Y"),
+    text: article.article_text,
+    preview: article.preview_text,
+    id: article.id
+   }, options={prerender: true}) %>
+<% end %>
