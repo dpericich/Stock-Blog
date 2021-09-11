@@ -1,0 +1,14 @@
+<h1><%= @article.title %></h1>
+<p><%= @article.author %></p>
+<p><%= @article.published_date %></p>
+<%= link_to("Edit Article", "/articles/#{@article.id}/edit") %>
+<%= button_to("Destroy", "/articles/#{@article.id}", method: :delete) %>
+<hr />
+<p><%= @article.article_text %></p>
+
+<%= @other_articles.each do |article| %>
+  <p><%= article.title %></p>
+<% end %>
+
+<hr />
+<%= link_to "Home", "/" %>

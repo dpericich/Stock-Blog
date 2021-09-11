@@ -3,6 +3,51 @@ class ArticlesController < ActionController::Base
     @articles = Article.all
   end
 
+  def new
+    @article = Article.new
+  end
+
+  # Action method
+  def create
+    @article = Article.new(title: params[:article][:title], author: params[:article][:author], article_text: params[:article][:article_text], published_date: DateTime.now)
+    redirect_to @article and return if @article.save
+    render :new and return
+  end
+
+  def show
+    @article = Article.find(params[:id])
+    @other_articles = show_other_articles
+  end
+
+  def edit
+    # Will use form helper to get at article
+    @article = Article.find(article_params[:id])
+  end
+
+  def update
+    @article = Article.find(article_params[:id])
+    @article.update!(title: article_params[:title], article_text: article_params[:article_text])
+    redirect_to action: :show
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    puts "I have #{@article}"
+    @article.destroy
+
+    redirect_to root_path
+  end
+
+  private
+
+  def article_params
+    params.permit(:id, :title, :article_text)
+  end
+
+  def show_other_articles
+    Article.all.last(3)
+  end
+
   # How does this app work?
   # Basic blog features to allow me to write about stocks that I am interested in
 

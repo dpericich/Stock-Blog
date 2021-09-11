@@ -1,0 +1,14 @@
+<h1>New Article</h1>
+<%= form_with model: @article do |form| %>
+  <%= form.label :title, "Title" %>
+  <%= form.text_field :title %>
+  <br />
+  <%= form.label :author, "Author" %>
+  <%= form.text_field :author %>
+  <br />
+  <%= form.label :article_text, "Article Text" %>
+  <%= form.text_area :article_text %>
+  <br />
+  <%= form.submit "Create Article" %>
+<% end %>
+<%= link_to "Home", "/" %>

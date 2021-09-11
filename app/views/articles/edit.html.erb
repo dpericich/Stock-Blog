@@ -1,0 +1,13 @@
+<h1> Edit Article </h1>
+  <%= form_with url: "/articles/#{@article.id}", method: :patch do |form| %>
+  <%= hidden_field(:article, :id) %>
+  <%= form.label :title, "Title" %>
+  <br />
+  <%= form.text_field :title, value: @article.title %>
+  <br />
+  <%= form.label :article_text, "Article Body:" %>
+  <br />
+  <%= form.text_area :article_text, value: @article.article_text %>
+  <br />
+  <%= form.submit "Update Article" %>
+<% end %>
