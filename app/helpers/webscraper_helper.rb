@@ -23,6 +23,18 @@ module WebscraperHelper
     end
   end
 
+  def self.yahoo_stock_daily_report(ticker_symbols)
+    output = ticker_symbols.map do |symbol|
+      parsed_web_page = retrieve_yahoo_page(symbol)
+      company_name = yahoo_company_name(parsed_web_page)
+      ticker_symbol = ticker_symbol
+      ending_date = Date.today
+      "#{company_name}: $#{ending_price} - #{ending_date}"
+    end
+    output.each { |stock|
+      pp stock
+    }
+  end
 
   def self.google_company_scraper(ticker_symbol)
     address = "https://www.google.com/search?q=#{ticker_symbol}+stock"
