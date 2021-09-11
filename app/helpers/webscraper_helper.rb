@@ -17,7 +17,7 @@ module WebscraperHelper
       ending_price = yahoo_stock_price(parsed_web_page)
       ending_date = Date.today
 
-      DailyStock.create!(company_name: company_name, ticker_symbol: ticker_symbol, ending_price: ending_price, ending_date: ending_date)
+      DailyStock.create!(company_name: company_name, ticker_symbol: ticker_symbol, ending_price: ending_price, ending_date: ending_date) and return
     rescue => e
       pp "Sorry, we can't find a record for the '#{ticker_symbol}' ticker symbol."
     end
