@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ArticlePreview = ({articles}) => {
+const ArticlePreview = ({articles, preview}) => {
   return(
     <div className="article-preview__container">
       {articles.map((article) =>
@@ -13,8 +13,8 @@ const ArticlePreview = ({articles}) => {
           <p className="article-preview__publish--date">{article.published_date}</p>
           {console.log(article.published_date)}
         </div>
-        <p className="article-preview__text">{article.article_text}</p>
-        <p className="article-preview__article-link">Read More...</p>
+        <p className="article-preview__text">{article.preview}</p>
+        <a href={`/articles/${article.id}`} className="article-preview__article-link">Read More...</a>
       </div>
       )}
     </div>
