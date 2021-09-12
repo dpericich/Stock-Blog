@@ -1,13 +1,16 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.author %></p>
-<p><%= @article.published_date %></p>
-<%= link_to("Edit Article", "/articles/#{@article.id}/edit") %>
-<%= button_to("Destroy", "/articles/#{@article.id}", method: :delete) %>
-<hr />
-<p><%= @article.article_text %></p>
+<%= react_component("Article", props={
+  title: @article.title,
+  author: @article.author,
+  date: Date.parse(@article.published_date.to_s).strftime("%m/%d/%Y"),
+  text: @article.article_text,
+  id: @article.id
+  },
+  options = {prerender: true}) %>
 
-<%= @other_articles.each do |article| %>
-  <p><%= article.title %></p>
+<!-- This can be it's own component -->
+<h3>Other Articles</h3>
+<% @other_articles.each do |article| %>
+  <p><%= link_to article.title, article %></p>
 <% end %>
 
 <hr />
